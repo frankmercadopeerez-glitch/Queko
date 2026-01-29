@@ -43,11 +43,52 @@
         .btn-secondary { background-color: #F3F4F6; color: #1F2937; font-weight: 600; padding: 0.75rem 1rem; border-radius: 0.5rem; transition: all 0.3s ease; border: 1px solid #E5E7EB; display: inline-block; text-align: center; font-size: 0.875rem; cursor: pointer; }
         .btn-secondary:hover { background-color: #E5E7EB; color: #111827; }
 
-        .whatsapp-float { position: fixed; bottom: 30px; right: 30px; z-index: 1000; display: flex; flex-direction: column; align-items: center; cursor: pointer; transition: all 0.3s; }
-        .whatsapp-icon { width: 65px; height: 65px; filter: drop-shadow(0 4px 10px rgba(0,0,0,0.2)); transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275); }
+        /* Estilos WhatsApp Flotante (Unificado) */
+        .whatsapp-float { 
+            position: fixed; 
+            bottom: 30px; 
+            right: 30px; 
+            z-index: 1000; 
+            display: flex; 
+            flex-direction: column; 
+            align-items: center; 
+            cursor: pointer; 
+            transition: all 0.3s; 
+            text-decoration: none; 
+        }
+        .whatsapp-icon { 
+            width: 65px; 
+            height: 65px; 
+            filter: drop-shadow(0 4px 10px rgba(0,0,0,0.2)); 
+            transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275); 
+        }
         .whatsapp-float:hover .whatsapp-icon { transform: scale(1.1); }
-        .whatsapp-text { background-color: #fff; color: #111827; padding: 4px 12px; border-radius: 50px; font-size: 12px; font-weight: 700; margin-top: 8px; box-shadow: 0 4px 12px rgba(0,0,0,0.15); }
-        @media (max-width: 768px) { .whatsapp-float { bottom: 20px; right: 20px; transform: scale(0.85); } .whatsapp-text { display: none; } }
+        .whatsapp-text { 
+            background-color: #fff; 
+            color: #111827; 
+            padding: 4px 12px; 
+            border-radius: 50px; 
+            font-size: 12px; 
+            font-weight: 700; 
+            margin-top: 8px; 
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15); 
+            text-align: center;
+            line-height: 1.2;
+        }
+        
+        /* Ajustes para Móvil */
+        @media (max-width: 768px) { 
+            .whatsapp-float { 
+                bottom: 20px; 
+                right: 20px; 
+                transform: scale(0.9); 
+            } 
+            .whatsapp-text {
+                display: block; 
+                font-size: 10px; 
+                padding: 3px 10px;
+            }
+        }
 
         /* Modal Styles */
         .modal-open { overflow: hidden; }
@@ -74,14 +115,19 @@
                 <i class="fas fa-bars text-2xl"></i>
             </button>
         </div>
-        <div id="mobile-menu" class="hidden bg-gray-900 absolute top-full left-0 w-full p-6 md:hidden shadow-xl border-t border-gray-800">
-            <a href="index.html" class="block py-3 text-gray-300 hover:text-white font-semibold">Inicio</a>
-            <a href="fleet.html" class="block py-3 text-white font-semibold">Flota</a>
-            <a href="experiences.html" class="block py-3 text-gray-300 hover:text-white font-semibold">Experiencias</a>
-            <a href="about.html" class="block py-3 text-gray-300 hover:text-white font-semibold">Nosotros</a>
-            <a href="blog/index.html" class="block py-3 text-gray-300 hover:text-white font-semibold">Blog</a>
-        </div>
     </nav>
+
+    <!-- MENÚ MÓVIL (Fuera del nav para corregir display) -->
+    <div id="mobile-menu" class="fixed inset-0 bg-gray-900/95 backdrop-blur-md z-[60] hidden flex flex-col justify-center items-center space-y-8 opacity-0 transition-opacity duration-300">
+        <a href="index.html" class="text-2xl font-bold text-white hover:text-blue-400">Inicio</a>
+        <a href="fleet.html" class="text-2xl font-bold text-white hover:text-blue-400">Nuestra Flota</a>
+        <a href="experiences.html" class="text-2xl font-bold text-white hover:text-blue-400">Experiencias</a>
+        <a href="about.html" class="text-2xl font-bold text-white hover:text-blue-400">Nosotros</a>
+        <a href="blog/index.html" class="text-2xl font-bold text-white hover:text-blue-400">Blog</a>
+        <button id="close-menu-btn" class="absolute top-6 right-6 text-white text-3xl">
+            <i class="fas fa-times"></i>
+        </button>
+    </div>
 
     <div class="page-header pt-36 pb-20 text-center text-white px-4">
         <h1 class="text-4xl md:text-6xl font-bold mb-6 drop-shadow-lg">Elige tu Nave</h1>
@@ -271,6 +317,7 @@
         </div>
     </footer>
 
+    <!-- WhatsApp Button (Botón Flotante con texto visible en móvil) -->
     <a href="https://wa.me/573226452179" target="_blank" class="whatsapp-float group">
         <img src="images/WhatsApp.svg.webp" alt="WhatsApp" class="whatsapp-icon">
         <span class="whatsapp-text">Contactar un asesor</span>
@@ -328,7 +375,21 @@
     <script>
         // Menu movil
         document.getElementById('mobile-menu-btn').addEventListener('click', function() {
-            document.getElementById('mobile-menu').classList.toggle('hidden');
+            const menu = document.getElementById('mobile-menu');
+            if (menu.classList.contains('hidden')) {
+                menu.classList.remove('hidden');
+                setTimeout(() => menu.classList.remove('opacity-0'), 10);
+            } else {
+                menu.classList.add('opacity-0');
+                setTimeout(() => menu.classList.add('hidden'), 300);
+            }
+        });
+
+        // Close on X
+        document.getElementById('close-menu-btn')?.addEventListener('click', function() {
+            const menu = document.getElementById('mobile-menu');
+            menu.classList.add('opacity-0');
+            setTimeout(() => menu.classList.add('hidden'), 300);
         });
 
         // Data de Botes
