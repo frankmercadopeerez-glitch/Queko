@@ -16,7 +16,10 @@
         .slider-wrapper { overflow: hidden; position: relative; height: 16rem; }
         .slider-track { display: flex; animation: slide 20s linear infinite; width: calc(100% * 7); }
         .slider-track:hover { animation-play-state: paused; }
-        .slider-img { width: 100%; height: 100%; object-fit: cover; flex-shrink: 0; }
+        
+        /* CORRECCIÓN ZOOM: Ancho relativo al track (100% / 7 imágenes = 14.28%) */
+        .slider-img { width: 14.2857%; height: 100%; object-fit: cover; flex-shrink: 0; }
+        
         @keyframes slide { 
             0% { transform: translateX(0); } 
             14% { transform: translateX(0); } 
@@ -34,14 +37,23 @@
             100% { transform: translateX(-85.68%); }
         }
 
-        .btn-primary { background-color: #2563EB; color: white; font-weight: 600; padding: 0.75rem 2rem; border-radius: 0.5rem; transition: all 0.3s ease; box-shadow: 0 4px 6px -1px rgba(37, 99, 235, 0.3); display: inline-block; text-align: center; }
+        .btn-primary { background-color: #2563EB; color: white; font-weight: 600; padding: 0.75rem 1rem; border-radius: 0.5rem; transition: all 0.3s ease; box-shadow: 0 4px 6px -1px rgba(37, 99, 235, 0.3); display: inline-block; text-align: center; font-size: 0.875rem; }
         .btn-primary:hover { background-color: #1D4ED8; transform: translateY(-2px); box-shadow: 0 10px 15px -3px rgba(37, 99, 235, 0.4); }
         
+        .btn-secondary { background-color: #F3F4F6; color: #1F2937; font-weight: 600; padding: 0.75rem 1rem; border-radius: 0.5rem; transition: all 0.3s ease; border: 1px solid #E5E7EB; display: inline-block; text-align: center; font-size: 0.875rem; cursor: pointer; }
+        .btn-secondary:hover { background-color: #E5E7EB; color: #111827; }
+
         .whatsapp-float { position: fixed; bottom: 30px; right: 30px; z-index: 1000; display: flex; flex-direction: column; align-items: center; cursor: pointer; transition: all 0.3s; }
         .whatsapp-icon { width: 65px; height: 65px; filter: drop-shadow(0 4px 10px rgba(0,0,0,0.2)); transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275); }
         .whatsapp-float:hover .whatsapp-icon { transform: scale(1.1); }
         .whatsapp-text { background-color: #fff; color: #111827; padding: 4px 12px; border-radius: 50px; font-size: 12px; font-weight: 700; margin-top: 8px; box-shadow: 0 4px 12px rgba(0,0,0,0.15); }
         @media (max-width: 768px) { .whatsapp-float { bottom: 20px; right: 20px; transform: scale(0.85); } .whatsapp-text { display: none; } }
+
+        /* Modal Styles */
+        .modal-open { overflow: hidden; }
+        #boatModal { transition: opacity 0.3s ease; }
+        #boatModal.hidden { opacity: 0; pointer-events: none; }
+        #boatModal:not(.hidden) { opacity: 1; pointer-events: auto; }
     </style>
 </head>
 <body class="bg-gray-50 text-gray-800">
@@ -100,7 +112,10 @@
                         <li class="flex items-center"><i class="fas fa-tachometer-alt w-6 text-blue-500"></i> 2 Yamaha 300 HP</li>
                         <li class="flex items-center"><i class="fas fa-users w-6 text-blue-500"></i> 16 Pasajeros</li>
                     </ul>
-                    <a href="https://wa.me/573226452179?text=Cotizar%20Interceptor" target="_blank" class="btn-primary w-full mt-auto">Cotizar Ahora</a>
+                    <div class="mt-auto grid grid-cols-2 gap-3">
+                        <button onclick="openModal('interceptor')" class="btn-secondary">Ver Ficha</button>
+                        <a href="https://wa.me/573226452179?text=Cotizar%20Interceptor" target="_blank" class="btn-primary">Cotizar</a>
+                    </div>
                 </div>
             </div>
 
@@ -125,7 +140,10 @@
                         <li class="flex items-center"><i class="fas fa-tachometer-alt w-6 text-blue-500"></i> 2 Yamaha 300 HP</li>
                         <li class="flex items-center"><i class="fas fa-users w-6 text-blue-500"></i> 26 Pasajeros</li>
                     </ul>
-                    <a href="https://wa.me/573226452179?text=Cotizar%20La%20Leona" target="_blank" class="btn-primary w-full mt-auto">Cotizar Ahora</a>
+                    <div class="mt-auto grid grid-cols-2 gap-3">
+                        <button onclick="openModal('laleona')" class="btn-secondary">Ver Ficha</button>
+                        <a href="https://wa.me/573226452179?text=Cotizar%20La%20Leona" target="_blank" class="btn-primary">Cotizar</a>
+                    </div>
                 </div>
             </div>
 
@@ -150,7 +168,10 @@
                         <li class="flex items-center"><i class="fas fa-tachometer-alt w-6 text-blue-500"></i> 2 Yamaha 300 HP</li>
                         <li class="flex items-center"><i class="fas fa-users w-6 text-blue-500"></i> 28 Pasajeros</li>
                     </ul>
-                    <a href="https://wa.me/573226452179?text=Cotizar%20Oly%20420" target="_blank" class="btn-primary w-full mt-auto">Cotizar Ahora</a>
+                    <div class="mt-auto grid grid-cols-2 gap-3">
+                        <button onclick="openModal('oly')" class="btn-secondary">Ver Ficha</button>
+                        <a href="https://wa.me/573226452179?text=Cotizar%20Oly%20420" target="_blank" class="btn-primary">Cotizar</a>
+                    </div>
                 </div>
             </div>
 
@@ -175,7 +196,10 @@
                         <li class="flex items-center"><i class="fas fa-tachometer-alt w-6 text-blue-500"></i> 2 Yamaha 300 HP</li>
                         <li class="flex items-center"><i class="fas fa-users w-6 text-blue-500"></i> 28 Pasajeros</li>
                     </ul>
-                    <a href="https://wa.me/573226452179?text=Cotizar%20Vicky" target="_blank" class="btn-primary w-full mt-auto">Cotizar Ahora</a>
+                    <div class="mt-auto grid grid-cols-2 gap-3">
+                        <button onclick="openModal('vicky')" class="btn-secondary">Ver Ficha</button>
+                        <a href="https://wa.me/573226452179?text=Cotizar%20Vicky" target="_blank" class="btn-primary">Cotizar</a>
+                    </div>
                 </div>
             </div>
 
@@ -200,7 +224,10 @@
                         <li class="flex items-center"><i class="fas fa-tachometer-alt w-6 text-blue-500"></i> 2 Yamaha 300 HP</li>
                         <li class="flex items-center"><i class="fas fa-users w-6 text-blue-500"></i> 28 Pasajeros</li>
                     </ul>
-                    <a href="https://wa.me/573226452179?text=Cotizar%20Virginia" target="_blank" class="btn-primary w-full mt-auto">Cotizar Ahora</a>
+                    <div class="mt-auto grid grid-cols-2 gap-3">
+                        <button onclick="openModal('virginia')" class="btn-secondary">Ver Ficha</button>
+                        <a href="https://wa.me/573226452179?text=Cotizar%20Virginia" target="_blank" class="btn-primary">Cotizar</a>
+                    </div>
                 </div>
             </div>
 
@@ -249,9 +276,148 @@
         <span class="whatsapp-text">Contactar un asesor</span>
     </a>
 
+    <!-- MODAL ESTRUCTURA -->
+    <div id="boatModal" class="fixed inset-0 z-[100] hidden overflow-y-auto" aria-labelledby="modal-title" role="dialog" aria-modal="true">
+        <div class="flex items-center justify-center min-h-screen pt-4 px-4 pb-20 text-center sm:block sm:p-0">
+            <!-- Background overlay -->
+            <div class="fixed inset-0 bg-gray-900 bg-opacity-75 transition-opacity backdrop-blur-sm" aria-hidden="true" onclick="closeModal()"></div>
+
+            <!-- This element is to trick the browser into centering the modal contents. -->
+            <span class="hidden sm:inline-block sm:align-middle sm:h-screen" aria-hidden="true">&#8203;</span>
+
+            <!-- Modal panel -->
+            <div class="relative inline-block align-bottom bg-white rounded-xl text-left overflow-hidden shadow-2xl transform transition-all sm:my-8 sm:align-middle sm:max-w-xl w-full">
+                <!-- Header -->
+                <div class="bg-gray-50 px-4 py-4 sm:px-6 flex justify-between items-center border-b border-gray-100">
+                    <h3 class="text-xl leading-6 font-bold text-gray-900" id="modalTitle">Nombre del Bote</h3>
+                    <button type="button" class="text-gray-400 hover:text-gray-500 focus:outline-none" onclick="closeModal()">
+                        <i class="fas fa-times text-xl"></i>
+                    </button>
+                </div>
+                
+                <!-- Body -->
+                <div class="px-6 py-6">
+                    <p class="text-gray-600 text-sm leading-relaxed mb-6" id="modalDesc">Descripción...</p>
+                    
+                    <div class="bg-blue-50 rounded-lg p-4 mb-6">
+                        <h4 class="text-blue-900 font-bold text-sm mb-3 border-b border-blue-200 pb-2">Especificaciones Técnicas</h4>
+                        <ul class="space-y-2 text-sm text-gray-700" id="modalSpecs">
+                            <!-- Specs injected JS -->
+                        </ul>
+                    </div>
+
+                    <div class="text-xs text-gray-400 italic bg-gray-50 p-3 rounded border border-gray-100">
+                        <i class="fas fa-shield-alt text-gray-400 mr-1"></i>
+                        <strong>Nota:</strong> Todas nuestras embarcaciones cuentan con Póliza de Accidentes Personales Colectivos, Certificados de Navegabilidad expedidos por la DIMAR y todo el equipo de seguridad y salvamento exigido por Capitanía de Puerto de Cartagena.
+                    </div>
+                </div>
+
+                <!-- Footer -->
+                <div class="bg-gray-50 px-6 py-4 flex flex-row-reverse gap-3">
+                    <a href="#" id="modalWhatsapp" target="_blank" class="w-full sm:w-auto inline-flex justify-center rounded-md border border-transparent shadow-sm px-4 py-2 bg-green-600 text-base font-medium text-white hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500 sm:text-sm">
+                        <i class="fab fa-whatsapp mr-2 mt-1"></i> Cotizar este Bote
+                    </a>
+                    <button type="button" class="w-full sm:w-auto mt-3 sm:mt-0 inline-flex justify-center rounded-md border border-gray-300 shadow-sm px-4 py-2 bg-white text-base font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 sm:text-sm" onclick="closeModal()">
+                        Cerrar
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <script>
+        // Menu movil
         document.getElementById('mobile-menu-btn').addEventListener('click', function() {
             document.getElementById('mobile-menu').classList.toggle('hidden');
+        });
+
+        // Data de Botes
+        const boats = {
+            'laleona': {
+                title: 'La Leona',
+                desc: 'LA LEONA es una embarcación muy cómoda, perfecta para eventos corporativos, excursiones o grupos grandes. Cuenta con amplias áreas de estar y de descanso, cojinería de lujo, baño interno, escaleras para bajar al mar cómodamente, asoleadoras con espaldar en la proa, un moderno equipo de sonido y nevera con hielo.',
+                specs: [
+                    { label: 'Eslora', value: '42 Pies' },
+                    { label: 'Motores', value: '2 Yamaha 4T 300 HP' },
+                    { label: 'Capacidad', value: '26 Pasajeros' }
+                ]
+            },
+            'vicky': {
+                title: 'Vicky 420',
+                desc: 'VICKY420 es una embarcación muy cómoda, perfecta para eventos corporativos, excursiones o grupos grandes. Esta cuenta con amplias áreas de estar y de descanso, cuenta con cojinería de lujo, baño interno, escaleras para bajar al mar cómodamente, asoleadoras con espaldar en la proa, un moderno equipo de sonido y nevera con hielo.',
+                specs: [
+                    { label: 'Eslora', value: '42 Pies' },
+                    { label: 'Motores', value: '2 Yamaha 4T 300 HP' },
+                    { label: 'Capacidad', value: '28 Pasajeros' }
+                ]
+            },
+            'oly': {
+                title: 'Oly 420',
+                desc: 'OLY420 es una embarcación muy cómoda, perfecta para eventos corporativos, excursiones o grupos grandes. Cuenta con amplias áreas de estar y de descanso, cojinería de lujo, baño interno, escaleras para bajar al mar cómodamente, asoleadoras con espaldar en la proa, un moderno equipo de sonido y nevera con hielo.',
+                specs: [
+                    { label: 'Eslora', value: '42 Pies' },
+                    { label: 'Motores', value: '2 Yamaha 4T 300 HP' },
+                    { label: 'Capacidad', value: '28 Pasajeros' }
+                ]
+            },
+            'virginia': {
+                title: 'Virginia 420',
+                desc: 'VIRGINIA420 es una embarcación muy cómoda, perfecta para eventos corporativos, excursiones o grupos grandes. Esta cuenta con amplias áreas de estar y de descanso, cuenta con cojinería de lujo, baño interno, escaleras para bajar al mar cómodamente, asoleadoras con espaldar en la proa, un moderno equipo de sonido y nevera con hielo.',
+                specs: [
+                    { label: 'Eslora', value: '42 Pies' },
+                    { label: 'Motores', value: '2 Yamaha 4T 300 HP' },
+                    { label: 'Capacidad', value: '28 Pasajeros' }
+                ]
+            },
+            'interceptor': {
+                title: 'Interceptor 38\'',
+                desc: 'INTERCEPTOR es una lancha perfecta para compartir con tus familiares y amigos, con cojinería de lujo, baño interno, escaleras para bajar al mar cómodamente, asoleadoras con espaldar en la proa, un moderno equipo de sonido y nevera con hielo.',
+                specs: [
+                    { label: 'Eslora', value: '38 Pies' },
+                    { label: 'Motores', value: '2 Yamaha 4T 300 HP' },
+                    { label: 'Capacidad', value: '16 Pasajeros' }
+                ]
+            }
+        };
+
+        const modal = document.getElementById('boatModal');
+        const modalTitle = document.getElementById('modalTitle');
+        const modalDesc = document.getElementById('modalDesc');
+        const modalSpecs = document.getElementById('modalSpecs');
+        const modalWhatsapp = document.getElementById('modalWhatsapp');
+
+        function openModal(boatId) {
+            const data = boats[boatId];
+            if (!data) return;
+
+            modalTitle.innerText = data.title;
+            modalDesc.innerText = data.desc;
+            
+            // Build Specs HTML
+            modalSpecs.innerHTML = data.specs.map(spec => 
+                `<li class="flex justify-between border-b border-gray-100 pb-1 last:border-0">
+                    <span class="font-semibold text-gray-600">${spec.label}:</span>
+                    <span class="text-gray-800">${spec.value}</span>
+                </li>`
+            ).join('');
+
+            // Update WhatsApp Link
+            modalWhatsapp.href = `https://wa.me/573226452179?text=Hola,%20me%20interesa%20cotizar%20el%20bote%20${encodeURIComponent(data.title)}`;
+
+            modal.classList.remove('hidden');
+            document.body.classList.add('modal-open');
+        }
+
+        function closeModal() {
+            modal.classList.add('hidden');
+            document.body.classList.remove('modal-open');
+        }
+
+        // Close on ESC key
+        document.addEventListener('keydown', function(event) {
+            if (event.key === "Escape") {
+                closeModal();
+            }
         });
     </script>
 </body>

@@ -11,11 +11,28 @@
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
         body { font-family: 'Montserrat', sans-serif; }
-        .hero-bg {
-            background-image: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.4)), url('images/foto (3).JPG');
+        
+        /* Hero con Fade suave */
+        .hero-section {
+            position: relative;
+            height: 95vh;
+            overflow: hidden;
+        }
+        .hero-bg-slide {
+            position: absolute;
+            inset: 0;
             background-size: cover;
             background-position: center;
-            height: 95vh;
+            opacity: 0;
+            transition: opacity 1.5s ease-in-out;
+            z-index: 0;
+        }
+        .hero-bg-slide.active { opacity: 1; }
+        .hero-overlay {
+            background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.4));
+            position: absolute;
+            inset: 0;
+            z-index: 1;
         }
         
         .btn-primary { background-color: #2563EB; color: white; font-weight: 600; padding: 0.75rem 2rem; border-radius: 0.5rem; transition: all 0.3s ease; box-shadow: 0 4px 6px -1px rgba(37, 99, 235, 0.3); display: inline-block; }
@@ -24,21 +41,24 @@
         .btn-outline { border: 2px solid #2563EB; color: #2563EB; font-weight: 600; padding: 0.6rem 2rem; border-radius: 0.5rem; transition: all 0.3s ease; display: inline-block; background-color: transparent; }
         .btn-outline:hover { background-color: #2563EB; color: white; }
 
+        /* Estilos WhatsApp Flotante sin fondo (Igual que Fleet) */
         .whatsapp-float { position: fixed; bottom: 30px; right: 30px; z-index: 1000; display: flex; flex-direction: column; align-items: center; cursor: pointer; transition: all 0.3s; }
         .whatsapp-icon { width: 65px; height: 65px; filter: drop-shadow(0 4px 10px rgba(0,0,0,0.2)); transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275); }
         .whatsapp-float:hover .whatsapp-icon { transform: scale(1.1); }
         .whatsapp-text { background-color: #fff; color: #111827; padding: 4px 12px; border-radius: 50px; font-size: 12px; font-weight: 700; margin-top: 8px; box-shadow: 0 4px 12px rgba(0,0,0,0.15); }
-
-        @media (max-width: 768px) {
-            .whatsapp-float { bottom: 20px; right: 20px; transform: scale(0.85); }
-            .whatsapp-text { display: none; }
-        }
+        @media (max-width: 768px) { .whatsapp-float { bottom: 20px; right: 20px; transform: scale(0.85); } .whatsapp-text { display: none; } }
 
         /* Animación Testimonios */
-        @keyframes scroll { 0% { transform: translateX(0); } 100% { transform: translateX(calc(-250px * 7)); } }
-        .slider { overflow: hidden; width: 100%; }
-        .slide-track { display: flex; width: calc(250px * 14); animation: scroll 40s linear infinite; }
-        .slide { width: 250px; padding: 0 15px; }
+        @keyframes scroll { 0% { transform: translateX(0); } 100% { transform: translateX(calc(-400px * 5)); } }
+        .slider { overflow: hidden; width: 100%; padding: 20px 0; }
+        .slide-track { display: flex; width: calc(400px * 10); animation: scroll 60s linear infinite; }
+        .slide { width: 400px; padding: 0 20px; flex-shrink: 0; }
+        
+        @media (max-width: 768px) {
+            .slide { width: 320px; }
+            .slide-track { width: calc(320px * 10); animation: scroll 40s linear infinite; }
+            @keyframes scroll { 0% { transform: translateX(0); } 100% { transform: translateX(calc(-320px * 5)); } }
+        }
     </style>
 </head>
 <body class="bg-gray-50 text-gray-800 antialiased selection:bg-blue-200 selection:text-blue-900">
@@ -69,7 +89,15 @@
         </div>
     </nav>
 
-    <header class="hero-bg flex items-center justify-center text-center px-4 relative">
+    <!-- Hero Section con Slideshow -->
+    <header class="hero-section flex items-center justify-center text-center px-4">
+        <div class="hero-bg-slide active" style="background-image: url('images/foto%20(3).JPG');"></div>
+        <div class="hero-bg-slide" style="background-image: url('images/oly.JPG');"></div>
+        <div class="hero-bg-slide" style="background-image: url('images/la%20leona%20(1).webp');"></div>
+        <div class="hero-bg-slide" style="background-image: url('images/foto%20(4).JPG');"></div>
+        
+        <div class="hero-overlay"></div>
+
         <div class="max-w-5xl text-white relative z-10">
             <span class="text-blue-400 font-bold tracking-widest uppercase text-sm md:text-base mb-4 block animate-fade-in-up drop-shadow-lg">Cartagena de Indias</span>
             <h1 class="text-5xl md:text-7xl font-bold mb-6 leading-tight tracking-tight drop-shadow-lg">
@@ -80,39 +108,183 @@
             </p>
             <div class="flex flex-col md:flex-row gap-4 justify-center">
                 <a href="fleet.html" class="btn-primary text-lg px-10 py-4">Ver Flota</a>
-                <a href="https://wa.me/573226452179" target="_blank" class="px-10 py-4 rounded-lg border border-white/30 hover:bg-white/10 backdrop-blur-sm text-white font-semibold transition duration-300">
-                    Contactar Asesor
+                <a href="experiences.html" class="px-10 py-4 rounded-lg border border-white/30 hover:bg-white/10 backdrop-blur-sm text-white font-semibold transition duration-300">
+                    Ver Experiencias
                 </a>
             </div>
         </div>
-        <div class="absolute bottom-10 left-1/2 transform -translate-x-1/2 animate-bounce text-white/50">
+        <div class="absolute bottom-10 left-1/2 transform -translate-x-1/2 animate-bounce text-white/50 z-20">
             <i class="fas fa-chevron-down text-2xl"></i>
         </div>
     </header>
 
+    <!-- Flota Destacada -->
+    <section class="py-20 bg-white">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-bold text-gray-900">Nuestra Flota Destacada</h2>
+                <p class="text-gray-500 mt-2">Botes deportivos y de lujo para cada ocasión.</p>
+            </div>
+            
+            <div class="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto">
+                <div class="group relative rounded-xl overflow-hidden shadow-lg cursor-pointer h-80">
+                    <img src="images/la%20leona%20(1).webp" alt="La Leona" class="w-full h-full object-cover transition duration-700">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-90"></div>
+                    <div class="absolute bottom-0 left-0 p-8 text-white">
+                        <h3 class="text-2xl font-bold">La Leona</h3>
+                        <p class="text-sm opacity-90">Ideal para grupos y fiestas.</p>
+                    </div>
+                </div>
+                <div class="group relative rounded-xl overflow-hidden shadow-lg cursor-pointer h-80">
+                    <img src="images/oly.JPG" alt="Oly" class="w-full h-full object-cover transition duration-700">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-90"></div>
+                    <div class="absolute bottom-0 left-0 p-8 text-white">
+                        <h3 class="text-2xl font-bold">Oly 420</h3>
+                        <p class="text-sm opacity-90">Velocidad y estilo deportivo.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="text-center mt-10">
+                <a href="fleet.html" class="btn-outline">Ver toda la flota</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Experiencias -->
+    <section class="py-20 bg-gray-50">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-bold text-gray-900">Vive la Experiencia</h2>
+                <p class="text-gray-500 mt-2">Momentos únicos en el Caribe.</p>
+            </div>
+
+            <div class="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto">
+                <div class="bg-white rounded-lg overflow-hidden shadow hover:shadow-lg transition flex flex-col md:flex-row h-auto md:h-64">
+                    <div class="md:w-1/2">
+                        <img src="images/foto%20(14).JPG" alt="Islas" class="w-full h-full object-cover">
+                    </div>
+                    <div class="p-8 md:w-1/2 flex flex-col justify-center">
+                        <h3 class="font-bold text-xl mb-2">Pasadía Islas del Rosario</h3>
+                        <p class="text-gray-600 text-sm mb-4">Un día completo navegando por aguas cristalinas y los mejores beach clubs.</p>
+                        <a href="experiences.html" class="text-blue-600 font-bold text-sm hover:underline">Ver detalles</a>
+                    </div>
+                </div>
+                <div class="bg-white rounded-lg overflow-hidden shadow hover:shadow-lg transition flex flex-col md:flex-row h-auto md:h-64">
+                    <div class="md:w-1/2">
+                        <img src="images/foto%20(4).JPG" alt="Atardecer" class="w-full h-full object-cover">
+                    </div>
+                    <div class="p-8 md:w-1/2 flex flex-col justify-center">
+                        <h3 class="font-bold text-xl mb-2">Atardeceres Mágicos</h3>
+                        <p class="text-gray-600 text-sm mb-4">Despide el día con la mejor vista de la ciudad amurallada desde el mar.</p>
+                        <a href="experiences.html" class="text-blue-600 font-bold text-sm hover:underline">Ver detalles</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="text-center mt-10">
+                <a href="experiences.html" class="btn-primary">Conoce todas nuestras experiencias</a>
+            </div>
+        </div>
+    </section>
+
     <!-- Testimonios Slider -->
-    <section class="py-16 bg-gray-100 overflow-hidden">
-        <div class="container mx-auto px-6 mb-8 text-center">
-            <h2 class="text-2xl font-bold text-gray-900">Lo que dicen nuestros clientes</h2>
+    <section class="py-16 bg-white overflow-hidden border-t border-gray-100">
+        <div class="container mx-auto px-6 mb-10 text-center">
+            <h2 class="text-2xl font-bold text-gray-900">Nuestros Clientes Opinan</h2>
         </div>
         <div class="slider">
             <div class="slide-track">
-                <!-- 7 Reseñas Duplicadas para efecto infinito -->
-                <div class="slide"><div class="bg-white p-6 rounded shadow text-sm">"Excelente servicio, el bote impecable." <br><strong class="text-blue-600">- Juan P.</strong></div></div>
-                <div class="slide"><div class="bg-white p-6 rounded shadow text-sm">"La mejor experiencia en Islas del Rosario." <br><strong class="text-blue-600">- Maria L.</strong></div></div>
-                <div class="slide"><div class="bg-white p-6 rounded shadow text-sm">"Comida deliciosa y tripulación muy atenta." <br><strong class="text-blue-600">- Carlos R.</strong></div></div>
-                <div class="slide"><div class="bg-white p-6 rounded shadow text-sm">"Recomendados 100%, seguridad total." <br><strong class="text-blue-600">- Ana S.</strong></div></div>
-                <div class="slide"><div class="bg-white p-6 rounded shadow text-sm">"El atardecer en la bahía fue mágico." <br><strong class="text-blue-600">- David M.</strong></div></div>
-                <div class="slide"><div class="bg-white p-6 rounded shadow text-sm">"Volveré a alquilar con Queko sin duda." <br><strong class="text-blue-600">- Sofía G.</strong></div></div>
-                <div class="slide"><div class="bg-white p-6 rounded shadow text-sm">"Todo salió perfecto, muy puntuales." <br><strong class="text-blue-600">- Luis F.</strong></div></div>
+                <div class="slide">
+                    <div class="bg-gray-50 p-8 rounded-xl shadow-sm border border-gray-100 h-full">
+                        <div class="text-yellow-400 text-xs mb-3"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+                        <p class="text-gray-600 italic text-sm mb-4 leading-relaxed">"Simplemente espectacular. Alquilamos el bote Oly para el cumpleaños de mi esposa y la atención fue de primera. El capitán nos llevó a lugares increíbles."</p>
+                        <div class="flex items-center">
+                            <div><strong class="text-gray-900 text-sm block">Carlos Mendoza</strong><span class="text-xs text-gray-500">México 🇲🇽</span></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="slide">
+                    <div class="bg-gray-50 p-8 rounded-xl shadow-sm border border-gray-100 h-full">
+                        <div class="text-yellow-400 text-xs mb-3"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+                        <p class="text-gray-600 italic text-sm mb-4 leading-relaxed">"La mejor experiencia en Cartagena. Todo súper organizado, la comida deliciosa y el bote 'La Leona' muy cómodo para todo el grupo."</p>
+                        <div class="flex items-center">
+                            <div><strong class="text-gray-900 text-sm block">Sarah Johnson</strong><span class="text-xs text-gray-500">USA 🇺🇸</span></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="slide">
+                    <div class="bg-gray-50 p-8 rounded-xl shadow-sm border border-gray-100 h-full">
+                        <div class="text-yellow-400 text-xs mb-3"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+                        <p class="text-gray-600 italic text-sm mb-4 leading-relaxed">"Excelente servicio al cliente. Nos ayudaron a planear todo desde antes de llegar. Los botes están en perfecto estado y la tripulación muy amable."</p>
+                        <div class="flex items-center">
+                            <div><strong class="text-gray-900 text-sm block">Andrea & Felipe</strong><span class="text-xs text-gray-500">Colombia 🇨🇴</span></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="slide">
+                    <div class="bg-gray-50 p-8 rounded-xl shadow-sm border border-gray-100 h-full">
+                        <div class="text-yellow-400 text-xs mb-3"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+                        <p class="text-gray-600 italic text-sm mb-4 leading-relaxed">"Una experiencia inolvidable. El atardecer desde el bote fue mágico. Sin duda volveremos a contratar con Queku en nuestras próximas vacaciones."</p>
+                        <div class="flex items-center">
+                            <div><strong class="text-gray-900 text-sm block">Martina G.</strong><span class="text-xs text-gray-500">Argentina 🇦🇷</span></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="slide">
+                    <div class="bg-gray-50 p-8 rounded-xl shadow-sm border border-gray-100 h-full">
+                        <div class="text-yellow-400 text-xs mb-3"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+                        <p class="text-gray-600 italic text-sm mb-4 leading-relaxed">"Muy profesionales y puntuales. El bote estaba impecable y la nevera con hielo listo como lo pedimos. 100% recomendados."</p>
+                        <div class="flex items-center">
+                            <div><strong class="text-gray-900 text-sm block">João Silva</strong><span class="text-xs text-gray-500">Brasil 🇧🇷</span></div>
+                        </div>
+                    </div>
+                </div>
                 <!-- Duplicados -->
-                <div class="slide"><div class="bg-white p-6 rounded shadow text-sm">"Excelente servicio, el bote impecable." <br><strong class="text-blue-600">- Juan P.</strong></div></div>
-                <div class="slide"><div class="bg-white p-6 rounded shadow text-sm">"La mejor experiencia en Islas del Rosario." <br><strong class="text-blue-600">- Maria L.</strong></div></div>
-                <div class="slide"><div class="bg-white p-6 rounded shadow text-sm">"Comida deliciosa y tripulación muy atenta." <br><strong class="text-blue-600">- Carlos R.</strong></div></div>
-                <div class="slide"><div class="bg-white p-6 rounded shadow text-sm">"Recomendados 100%, seguridad total." <br><strong class="text-blue-600">- Ana S.</strong></div></div>
-                <div class="slide"><div class="bg-white p-6 rounded shadow text-sm">"El atardecer en la bahía fue mágico." <br><strong class="text-blue-600">- David M.</strong></div></div>
-                <div class="slide"><div class="bg-white p-6 rounded shadow text-sm">"Volveré a alquilar con Queko sin duda." <br><strong class="text-blue-600">- Sofía G.</strong></div></div>
-                <div class="slide"><div class="bg-white p-6 rounded shadow text-sm">"Todo salió perfecto, muy puntuales." <br><strong class="text-blue-600">- Luis F.</strong></div></div>
+                 <div class="slide">
+                    <div class="bg-gray-50 p-8 rounded-xl shadow-sm border border-gray-100 h-full">
+                        <div class="text-yellow-400 text-xs mb-3"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+                        <p class="text-gray-600 italic text-sm mb-4 leading-relaxed">"Simplemente espectacular. Alquilamos el bote Oly para el cumpleaños de mi esposa y la atención fue de primera. El capitán nos llevó a lugares increíbles."</p>
+                        <div class="flex items-center">
+                            <div><strong class="text-gray-900 text-sm block">Carlos Mendoza</strong><span class="text-xs text-gray-500">México 🇲🇽</span></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="slide">
+                    <div class="bg-gray-50 p-8 rounded-xl shadow-sm border border-gray-100 h-full">
+                        <div class="text-yellow-400 text-xs mb-3"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+                        <p class="text-gray-600 italic text-sm mb-4 leading-relaxed">"La mejor experiencia en Cartagena. Todo súper organizado, la comida deliciosa y el bote 'La Leona' muy cómodo para todo el grupo."</p>
+                        <div class="flex items-center">
+                            <div><strong class="text-gray-900 text-sm block">Sarah Johnson</strong><span class="text-xs text-gray-500">USA 🇺🇸</span></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="slide">
+                    <div class="bg-gray-50 p-8 rounded-xl shadow-sm border border-gray-100 h-full">
+                        <div class="text-yellow-400 text-xs mb-3"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+                        <p class="text-gray-600 italic text-sm mb-4 leading-relaxed">"Excelente servicio al cliente. Nos ayudaron a planear todo desde antes de llegar. Los botes están en perfecto estado y la tripulación muy amable."</p>
+                        <div class="flex items-center">
+                            <div><strong class="text-gray-900 text-sm block">Andrea & Felipe</strong><span class="text-xs text-gray-500">Colombia 🇨🇴</span></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="slide">
+                    <div class="bg-gray-50 p-8 rounded-xl shadow-sm border border-gray-100 h-full">
+                        <div class="text-yellow-400 text-xs mb-3"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+                        <p class="text-gray-600 italic text-sm mb-4 leading-relaxed">"Una experiencia inolvidable. El atardecer desde el bote fue mágico. Sin duda volveremos a contratar con Queku en nuestras próximas vacaciones."</p>
+                        <div class="flex items-center">
+                            <div><strong class="text-gray-900 text-sm block">Martina G.</strong><span class="text-xs text-gray-500">Argentina 🇦🇷</span></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="slide">
+                    <div class="bg-gray-50 p-8 rounded-xl shadow-sm border border-gray-100 h-full">
+                        <div class="text-yellow-400 text-xs mb-3"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+                        <p class="text-gray-600 italic text-sm mb-4 leading-relaxed">"Muy profesionales y puntuales. El bote estaba impecable y la nevera con hielo listo como lo pedimos. 100% recomendados."</p>
+                        <div class="flex items-center">
+                            <div><strong class="text-gray-900 text-sm block">João Silva</strong><span class="text-xs text-gray-500">Brasil 🇧🇷</span></div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
@@ -126,14 +298,14 @@
             </div>
             <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto mb-10">
                 <article class="bg-gray-50 rounded-lg overflow-hidden shadow hover:shadow-lg transition">
-                    <img src="images/foto (5).JPG" alt="Blog 1" class="w-full h-48 object-cover">
+                    <img src="images/foto%20(5).JPG" alt="Blog 1" class="w-full h-48 object-cover">
                     <div class="p-6">
                         <h3 class="font-bold text-xl mb-2"><a href="blog/mejores-islas-rosario/index.html">Top 5 Islas Privadas</a></h3>
                         <p class="text-gray-600 text-sm">Descubre los lugares más exclusivos para fondear.</p>
                     </div>
                 </article>
                 <article class="bg-gray-50 rounded-lg overflow-hidden shadow hover:shadow-lg transition">
-                    <img src="images/foto (3).JPG" alt="Blog 2" class="w-full h-48 object-cover">
+                    <img src="images/foto%20(3).JPG" alt="Blog 2" class="w-full h-48 object-cover">
                     <div class="p-6">
                         <h3 class="font-bold text-xl mb-2"><a href="blog/gastronomia-cartagena/index.html">Gastronomía Isleña</a></h3>
                         <p class="text-gray-600 text-sm">Dónde comer la mejor langosta fresca.</p>
@@ -194,6 +366,7 @@
         </div>
     </footer>
 
+    <!-- WhatsApp Button (Botón Flotante Sin Fondo - Estilo Fleet) -->
     <a href="https://wa.me/573226452179" target="_blank" class="whatsapp-float group">
         <img src="images/WhatsApp.svg.webp" alt="WhatsApp" class="whatsapp-icon">
         <span class="whatsapp-text">Contactar un asesor</span>
@@ -212,9 +385,29 @@
         });
 
         document.getElementById('mobile-menu-btn').addEventListener('click', function() {
-            document.getElementById('mobile-menu').classList.toggle('hidden');
-            document.getElementById('mobile-menu').classList.toggle('opacity-0');
+            const menu = document.getElementById('mobile-menu');
+            if (menu.classList.contains('hidden')) {
+                menu.classList.remove('hidden');
+                setTimeout(() => menu.classList.remove('opacity-0'), 10);
+            } else {
+                menu.classList.add('opacity-0');
+                setTimeout(() => menu.classList.add('hidden'), 300);
+            }
         });
+
+        // Simple Fade Slider Logic for Hero
+        const slides = document.querySelectorAll('.hero-bg-slide');
+        let currentSlide = 0;
+        
+        function nextSlide() {
+            slides[currentSlide].classList.remove('active');
+            currentSlide = (currentSlide + 1) % slides.length;
+            slides[currentSlide].classList.add('active');
+        }
+
+        if(slides.length > 1) {
+            setInterval(nextSlide, 4000);
+        }
     </script>
 </body>
 </html>

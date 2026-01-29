@@ -12,7 +12,9 @@
     <style>
         body { font-family: 'Montserrat', sans-serif; }
         .page-header { background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('images/foto (6).JPG'); background-size: cover; background-position: center; }
-        .whatsapp-float { position: fixed; bottom: 30px; right: 30px; z-index: 1000; display: flex; flex-direction: column; align-items: center; cursor: pointer; }
+        
+        /* Estilos WhatsApp Flotante Consistentes */
+        .whatsapp-float { position: fixed; bottom: 30px; right: 30px; z-index: 1000; display: flex; flex-direction: column; align-items: center; cursor: pointer; transition: all 0.3s; text-decoration: none; }
         .whatsapp-icon { width: 65px; height: 65px; filter: drop-shadow(0 4px 10px rgba(0,0,0,0.2)); transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275); }
         .whatsapp-float:hover .whatsapp-icon { transform: scale(1.1); }
         .whatsapp-text { background-color: #fff; color: #111827; padding: 4px 12px; border-radius: 50px; font-size: 12px; font-weight: 700; margin-top: 8px; box-shadow: 0 4px 12px rgba(0,0,0,0.15); }
@@ -56,28 +58,62 @@
         <p class="text-lg text-gray-200 max-w-2xl mx-auto font-light drop-shadow-md">Somos cartageneros nativos, profesionales en comunicación y turismo.</p>
     </div>
 
-    <!-- Contenido Nosotros (Igual que antes) -->
+    <!-- Contenido Nosotros -->
     <section class="py-20 container mx-auto px-6">
         <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
+            <!-- Imagen Lateral -->
             <div class="relative sticky top-32">
                 <div class="absolute -bottom-4 -right-4 w-full h-full border-2 border-blue-100 rounded-lg -z-10"></div>
-                <img src="images/foto (8).JPG" alt="Equipo Queko" class="rounded-lg shadow-2xl w-full object-cover h-[600px]">
+                <img src="images/foto (8).JPG" alt="Equipo Queku" class="rounded-lg shadow-2xl w-full object-cover h-[600px]">
             </div>
-            <div class="space-y-6 text-lg text-gray-600 leading-relaxed">
+            
+            <!-- Texto Principal -->
+            <div class="space-y-6 text-lg text-gray-600 leading-relaxed text-justify">
                 <div>
                     <h2 class="text-3xl font-bold mb-6 text-gray-900">¿Quiénes Somos?</h2>
                     <div class="w-20 h-1 bg-blue-600 mb-8"></div>
                 </div>
-                <p><strong>Queko</strong> es una agencia virtual de turismo para la zona norte del caribe colombiano, con manejo exclusivo de la ciudad (corralito de piedra) Cartagena de Indias. Brindamos servicio personalizado de planificación de tiempo de estadía en la ciudad, contamos con información actualizada de botes, barcos y yates de lujo, hoteles, estancias o cabañas privadas en las islas o continente, turismo urbano, restaurantes, bares, monumentos históricos de interés turístico mundial como el Castillo San Felipe de Barajas y la ciudad amurallada entre muchos más.</p>
-                <p>Somos agentes de turismo con la capacidad de manejo de toda una logística local necesaria para hacer de su tiempo de vacaciones la mejor experiencia y sobre todo manejo de calidad de su inversión.</p>
+                
+                <p>
+                    <strong>Queku</strong> es una agencia virtual de turismo para la zona norte del caribe colombiano, con manejo exclusivo de la ciudad (Corralito de Piedra) <strong>Cartagena de Indias</strong>. Brindamos servicio personalizado de planificación de tiempo de estadía en la ciudad.
+                </p>
+                
+                <p>
+                    Contamos con información actualizada de botes, barcos y yates de lujo, hoteles, estancias o cabañas privadas en las islas o continente, turismo urbano, restaurantes, bares, y monumentos históricos de interés turístico mundial como el <strong>Castillo San Felipe de Barajas</strong> y la ciudad amurallada entre muchos más.
+                </p>
+                
+                <p>
+                    Somos agentes de turismo con la capacidad de manejo de toda una logística local necesaria para hacer de su tiempo de vacaciones la mejor experiencia y sobre todo, un manejo de calidad de su inversión.
+                </p>
+
+                <!-- Cita del Fundador -->
                 <div class="bg-blue-50 p-6 rounded-lg border-l-4 border-blue-600 my-8">
-                    <p class="italic text-gray-700">"Nacemos de la necesidad de brindar al turista un servicio personalizado y de confianza, donde las expectativas de vacaciones en la ciudad serán planificadas y resueltas de forma eficiente, rápida y actualizada. Siempre planes a medida de lo que exija el cliente."</p>
-                    <p class="mt-4 font-bold text-blue-900">— Mauricio Ramos, Fundador.</p>
+                    <p class="italic text-gray-700">
+                        "Nacemos de la necesidad de brindar al turista un servicio personalizado y de confianza, donde las expectativas de vacaciones en la ciudad serán planificadas y resueltas de forma eficiente, rápida y actualizada. Siempre planes a medida de lo que exija el cliente."
+                    </p>
+                    <div class="mt-4 flex items-center">
+                        <div class="w-10 h-10 bg-blue-200 rounded-full flex items-center justify-center text-blue-800 font-bold mr-3 text-sm">MR</div>
+                        <div>
+                            <p class="font-bold text-blue-900 text-sm">Mauricio Ramos</p>
+                            <p class="text-xs text-gray-500">Fundador & Periodista Cartagenero</p>
+                        </div>
+                    </div>
                 </div>
-                <p>Liderados por nuestro fundador <strong>Mauricio Ramos</strong>, somos cartageneros nativos, profesionales en el ámbito de la comunicación social y el periodismo. Tenemos más de <strong>15 años en el manejo de turismo</strong>, siendo el náutico e islas nuestra mayor fortaleza.</p>
-                <p>Queko está en la capacidad de organizar su plan de vacaciones ya sea de tipo familiar, de fiesta, descanso y/o planes herméticamente reservados bajo el amparo de contratos de confidencialidad.</p>
-                <p class="font-semibold text-gray-800">Tenemos nuestra agencia virtual y también contamos con oficinas físicas en el barrio MANGA para que su confianza sea nuestra razón de servir.</p>
-                <div class="grid grid-cols-2 gap-8 border-t border-gray-100 pt-8 mt-8">
+
+                <p>
+                    Somos cartageneros nativos, <strong>profesionales en el ámbito de la comunicación social y el periodismo</strong>. Tenemos más de <strong>15 años</strong> en el manejo de turismo, siendo el náutico e islas nuestra mayor fortaleza.
+                </p>
+                
+                <p>
+                    <strong>Queku</strong> está en la capacidad de organizar su plan de vacaciones ya sea de tipo familiar, de fiesta, descanso y/o planes herméticamente reservados bajo el amparo de contratos de confidencialidad.
+                </p>
+                
+                <p class="font-semibold text-gray-900 border-t border-gray-100 pt-4 mt-4">
+                    Tenemos nuestra agencia virtual y también contamos con oficinas físicas en el barrio <strong>MANGA</strong> para que su confianza sea nuestra razón de servir.
+                </p>
+
+                <!-- Estadísticas -->
+                <div class="grid grid-cols-2 gap-8 pt-4">
                     <div>
                         <span class="block text-4xl font-bold text-blue-600 mb-1">15+</span>
                         <span class="text-xs text-gray-400 uppercase tracking-wide font-bold">Años de Experiencia</span>
@@ -91,20 +127,22 @@
         </div>
     </section>
 
-    <!-- Seguridad Section (Igual) -->
+    <!-- Seguridad Section (Resumen) -->
     <section class="py-20 bg-gray-50 border-t border-gray-200">
         <div class="container mx-auto px-6 max-w-4xl">
             <div class="text-center mb-12">
                 <i class="fas fa-life-ring text-4xl text-blue-600 mb-4"></i>
-                <h2 class="text-3xl font-bold text-gray-900">Seguridad y Sostenibilidad</h2>
-                <p class="mt-4 text-gray-500">Normas vitales para una experiencia segura a bordo.</p>
+                <h2 class="text-3xl font-bold text-gray-900">Seguridad y Confianza</h2>
+                <p class="mt-4 text-gray-500">Su seguridad es nuestra prioridad en cada zarpe.</p>
             </div>
             <div class="bg-white p-8 rounded-xl shadow-md space-y-4">
-                <div class="flex items-start"><i class="fas fa-check-circle text-green-500 mt-1 mr-3"></i><p class="text-gray-600 text-sm">No quitarse los chalecos salvavidas hasta que la tripulación lo indique.</p></div>
-                <div class="flex items-start"><i class="fas fa-check-circle text-green-500 mt-1 mr-3"></i><p class="text-gray-600 text-sm">No levantarse de sus asientos mientras los motores estén encendidos.</p></div>
-                <div class="flex items-start"><i class="fas fa-check-circle text-green-500 mt-1 mr-3"></i><p class="text-gray-600 text-sm">No fumar ni consumir sustancias psicoactivas al interior de la embarcación.</p></div>
-                <div class="flex items-start"><i class="fas fa-check-circle text-green-500 mt-1 mr-3"></i><p class="text-gray-600 text-sm">Respetar las órdenes del capitán, máxima autoridad a bordo.</p></div>
-                <div class="mt-6 p-4 bg-blue-50 rounded-lg border-l-4 border-blue-600"><h4 class="font-bold text-blue-800 text-sm mb-1">Compromiso Sostenible</h4><p class="text-blue-700 text-xs">No recolecte ni compre material biológico (conchas, coral, estrellas). No ingrese plásticos de un solo uso a los Parques Nacionales.</p></div>
+                <div class="flex items-start"><i class="fas fa-check-circle text-green-500 mt-1 mr-3"></i><p class="text-gray-600 text-sm">Pólizas de seguro vigentes para todos los pasajeros.</p></div>
+                <div class="flex items-start"><i class="fas fa-check-circle text-green-500 mt-1 mr-3"></i><p class="text-gray-600 text-sm">Tripulación certificada y experta en navegación local.</p></div>
+                <div class="flex items-start"><i class="fas fa-check-circle text-green-500 mt-1 mr-3"></i><p class="text-gray-600 text-sm">Embarcaciones con mantenimiento al día y permisos de la DIMAR.</p></div>
+                <div class="mt-6 p-4 bg-blue-50 rounded-lg border-l-4 border-blue-600">
+                    <h4 class="font-bold text-blue-800 text-sm mb-1">Compromiso Local</h4>
+                    <p class="text-blue-700 text-xs">Apoyamos el turismo sostenible y respetuoso con el medio ambiente y las comunidades nativas.</p>
+                </div>
             </div>
         </div>
     </section>
@@ -148,6 +186,7 @@
         </div>
     </footer>
 
+    <!-- WhatsApp Floating Button -->
     <a href="https://wa.me/573226452179" target="_blank" class="whatsapp-float group">
         <img src="images/WhatsApp.svg.webp" alt="WhatsApp" class="whatsapp-icon">
         <span class="whatsapp-text">Contactar un asesor</span>
