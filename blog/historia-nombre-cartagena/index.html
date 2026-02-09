@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Gastronomía Isleña: Dónde Comer Langosta | Queku Blog</title>
+    <title>Cocinas del Caribe: Relatos en un Plato | Queku Blog</title>
     <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🚤</text></svg>">
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
@@ -18,49 +18,46 @@
         
         .article-content p { margin-bottom: 1.5rem; line-height: 1.8; color: #4B5563; }
         .article-content h2 { font-size: 1.5rem; font-weight: 700; color: #111827; margin-top: 2.5rem; margin-bottom: 1rem; }
-        .article-content ul { list-style-type: disc; padding-left: 1.5rem; margin-bottom: 1.5rem; color: #4B5563; }
-        .article-content li { margin-bottom: 0.5rem; }
     </style>
 </head>
 <body class="bg-gray-50 text-gray-800">
 
-    <nav class="fixed w-full z-50 bg-gray-900 text-white shadow-lg py-0 transition-all duration-300">
+    <nav class="fixed w-full z-50 bg-gray-900 text-white shadow-lg py-0">
         <div class="container mx-auto px-6 flex justify-between items-center">
             <a href="../../index.html" class="flex items-center gap-2 z-50">
                 <img src="../../images/logoqueku.png" alt="Queku Logo" class="h-12 md:h-20 drop-shadow-lg object-contain">
             </a>
-            <div class="hidden md:flex space-x-8 text-sm font-semibold tracking-wide uppercase h-full items-center">
+            <div class="hidden md:flex space-x-8 text-sm font-semibold tracking-wide uppercase">
                 <a href="../../index.html" class="text-gray-300 hover:text-white transition">Inicio</a>
-                <a href="../../fleet.html" class="text-gray-300 hover:text-white transition">Flota</a>
+                <a href="../../fleet.html" class="text-gray-300 hover:text-white transition">Flotilla</a>
                 <a href="../../experiences.html" class="text-gray-300 hover:text-white transition">Experiencias</a>
                 <a href="../../about.html" class="text-gray-300 hover:text-white transition">Nosotros</a>
                 <a href="../index.html" class="text-white border-b-2 border-blue-500">Blog</a>
             </div>
-            <button id="mobile-menu-btn" class="md:hidden z-50 focus:outline-none text-white">
+            <button id="mobile-menu-btn" class="md:hidden focus:outline-none">
                 <i class="fas fa-bars text-2xl"></i>
             </button>
         </div>
     </nav>
 
-    <div id="mobile-menu" class="fixed inset-0 bg-gray-900/95 backdrop-blur-md z-[60] hidden flex flex-col justify-center items-center space-y-8 opacity-0 transition-opacity duration-300">
-        <a href="../../index.html" class="text-2xl font-bold text-white hover:text-blue-400">Inicio</a>
-        <a href="../../fleet.html" class="text-2xl font-bold text-white hover:text-blue-400">Nuestra Flota</a>
-        <a href="../../experiences.html" class="text-2xl font-bold text-white hover:text-blue-400">Experiencias</a>
-        <a href="../../about.html" class="text-2xl font-bold text-white hover:text-blue-400">Nosotros</a>
-        <a href="../index.html" class="text-2xl font-bold text-white hover:text-blue-400">Blog</a>
-        <button id="close-menu-btn" class="absolute top-6 right-6 text-white text-3xl"><i class="fas fa-times"></i></button>
+    <div id="mobile-menu" class="hidden bg-gray-900 absolute top-full left-0 w-full p-6 md:hidden shadow-xl border-t border-gray-800">
+        <a href="../../index.html" class="block py-3 text-gray-300 hover:text-white font-semibold">Inicio</a>
+        <a href="../../fleet.html" class="block py-3 text-gray-300 hover:text-white font-semibold">Flotilla</a>
+        <a href="../../experiences.html" class="block py-3 text-gray-300 hover:text-white font-semibold">Experiencias</a>
+        <a href="../../about.html" class="block py-3 text-gray-300 hover:text-white font-semibold">Nosotros</a>
+        <a href="../index.html" class="block py-3 text-white font-semibold">Blog</a>
     </div>
 
     <header class="relative pt-32 pb-12 bg-gray-900 text-white">
         <div class="absolute inset-0 overflow-hidden">
-            <img src="../../images/foto (3).JPG" class="w-full h-full object-cover opacity-30" alt="Gastronomía Caribeña">
+            <img src="../../images/cartagenacentro.jpg" class="w-full h-full object-cover opacity-30" alt="Cocina Caribe">
         </div>
         <div class="relative container mx-auto px-6 text-center max-w-4xl">
-            <span class="text-blue-400 font-bold tracking-widest uppercase text-xs mb-4 block">Gastronomía del Caribe</span>
-            <h1 class="text-3xl md:text-5xl font-bold mb-6 leading-tight">Dónde comer la mejor langosta fresca en las Islas</h1>
+            <span class="text-orange-400 font-bold tracking-widest uppercase text-xs mb-4 block">Cultura y Sabor</span>
+            <h1 class="text-3xl md:text-5xl font-bold mb-6 leading-tight">Cocinas del Caribe: relatos que se sirven en un plato</h1>
             <div class="flex items-center justify-center text-sm text-gray-300 space-x-4">
-                <span><i class="far fa-calendar-alt mr-2"></i> Octubre 2024</span>
-                <span><i class="far fa-clock mr-2"></i> 4 min de lectura</span>
+                <span><i class="far fa-user mr-2"></i> Por Queku</span>
+                <span><i class="far fa-clock mr-2"></i> 5 min de lectura</span>
             </div>
         </div>
     </header>
@@ -68,34 +65,38 @@
     <section class="py-16 container mx-auto px-6">
         <div class="flex flex-col lg:flex-row gap-12">
             <article class="lg:w-2/3 article-content bg-white p-8 md:p-12 rounded-xl shadow-sm border border-gray-100">
-                <p class="text-lg font-medium text-gray-700">Ir a las Islas del Rosario y no probar los frutos del mar es un pecado. La gastronomía isleña es famosa por su frescura, y la reina indiscutible de estos platos es la langosta caribeña.</p>
+                <h2>Sabores que narran historias</h2>
+                <p>En el Caribe colombiano, cada plato es un relato, una memoria que se sirve con el aroma del mar y el calor del sol. Las cocinas de esta región no solo alimentan el cuerpo, sino que nutren el alma con historias de resistencia, identidad y comunidad. ¿Qué secretos guardan los fogones del Caribe? ¿Cómo se entrelazan los sabores con las voces de quienes los preparan?</p>
+
+                <h2>Identidad en cada bocado</h2>
+                <p>La cocina caribeña es un mosaico de culturas, un crisol donde se funden las tradiciones africanas, indígenas y europeas. Cada ingrediente cuenta una historia de migración y mestizaje, reflejando la identidad de un pueblo que ha sabido resistir y adaptarse. En un plato de arroz con coco, se puede sentir el eco de tambores africanos, mientras que en un sancocho de pescado, resuena la sabiduría ancestral de los pueblos indígenas.</p>
+
+                <h2>El legado africano</h2>
+                <p>El uso de especias y técnicas de cocción como el ahumado son herencias de los esclavos africanos que llegaron a estas costas. “La cocina es nuestra forma de recordar de dónde venimos”, dice un cocinero local, mientras remueve un guiso de mariscos.</p>
+
+                <h2>Sabiduría indígena</h2>
+                <p>Las comunidades indígenas han aportado ingredientes autóctonos como el maíz y la yuca, esenciales en la dieta caribeña. Estos elementos no solo enriquecen los platos, sino que también preservan la memoria de un territorio que se resiste al olvido.</p>
+
+                <h2>Memoria y transformación</h2>
+                <p>La cocina del Caribe no es estática; evoluciona con el tiempo, incorporando nuevas influencias y técnicas. Sin embargo, en su esencia, sigue siendo un espacio de memoria y resistencia. “Cocinar es recordar”, afirma una abuela mientras amasa arepas en su cocina de barro. En cada plato, se preserva una historia, una identidad que se niega a desaparecer.</p>
+
+                <h2>Innovación y tradición</h2>
+                <p>Los jóvenes chefs del Caribe están reinventando la cocina tradicional, fusionando sabores y técnicas modernas sin perder de vista sus raíces. Esta transformación es un reflejo de la dinámica cultural de la región, donde lo nuevo y lo antiguo coexisten en armonía.</p>
+
+                <h2>Cuando el sabor se convierte en memoria</h2>
+                <p>En el Caribe colombiano, la cocina es más que una necesidad; es una forma de vida, una expresión de identidad y resistencia. En Queku, celebramos estas historias que se sirven en un plato, recordándonos que la cultura es un banquete que nos invita a todos a la mesa.</p>
                 
-                <p>Aquí te recomendamos los mejores lugares, accesibles principalmente en bote, donde la experiencia culinaria es tan memorable como el paisaje.</p>
-
-                <h2>1. Restaurante de Paquito (Isla Grande)</h2>
-                <p>Una parada clásica. Conocido por sus enormes langostas a la parrilla y su arroz con coco inigualable. El ambiente es rústico y acogedor, perfecto para un almuerzo relajado después de una mañana de snorkel.</p>
-
-                <h2>2. Agua Azul Beach Club</h2>
-                <p>Si buscas algo más sofisticado, Agua Azul ofrece una experiencia gastronómica de alto nivel. Sus langostas son preparadas con técnicas gourmet pero manteniendo la esencia del sabor local. Ideal para acompañar con un vino blanco frío.</p>
-
-                <h2>3. Kioscos de Cholón</h2>
-                <p>Para los que prefieren la fiesta y comer dentro del agua. En Cholón, los nativos te llevan bandejas flotantes con langostas recién pescadas y asadas al carbón. Es una experiencia única, vibrante y llena de sabor.</p>
-
-                <h2>4. Playa Blanca (Barú)</h2>
-                <p>Aunque es más concurrido, hay zonas exclusivas donde puedes disfrutar de una cazuela de mariscos o una langosta termidor con los pies en la arena. La clave es ir temprano o reservar una zona privada.</p>
-
-                <div class="bg-yellow-50 p-6 rounded-lg border-l-4 border-yellow-500 mt-8">
-                    <h3 class="font-bold text-yellow-900 mb-2">Tip de Experto Queku:</h3>
-                    <p class="mb-0 text-sm text-yellow-800">Si prefieres privacidad total, recuerda que ofrecemos nuestro <strong>Servicio de Catering a Bordo</strong>. Podemos llevarte las mejores tablas de quesos, mariscos y bebidas premium directamente a tu yate.</p>
+                <div class="mt-8 pt-6 border-t border-gray-100 text-sm text-gray-500 italic">
+                    Fuente: Adaptado de textos sobre cultura culinaria del Caribe (Eventario).
                 </div>
             </article>
 
             <aside class="lg:w-1/3 space-y-8">
                 <div class="bg-white p-6 rounded-xl shadow-sm border border-gray-100 sticky top-32">
-                    <h3 class="text-xl font-bold text-gray-900 mb-4">¿Se te antojó?</h3>
-                    <p class="text-gray-600 text-sm mb-6">Planifica tu ruta gastronómica con nosotros. Te llevamos a los mejores restaurantes de las islas.</p>
-                    <a href="../../experiences.html" class="block w-full text-center bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 rounded-lg transition mb-3">Ver Experiencias</a>
-                    <a href="https://wa.me/573226452179" class="block w-full text-center bg-green-500 hover:bg-green-600 text-white font-bold py-3 rounded-lg transition"><i class="fab fa-whatsapp mr-2"></i> Reservar Ahora</a>
+                    <h3 class="text-xl font-bold text-gray-900 mb-4">Prueba estos sabores</h3>
+                    <p class="text-gray-600 text-sm mb-6">Reserva nuestra experiencia de <strong>Cenas Típicas en Casa Local</strong> y vive la gastronomía real de Cartagena.</p>
+                    <a href="../../experiences.html" class="block w-full text-center bg-orange-500 hover:bg-orange-600 text-white font-bold py-3 rounded-lg transition mb-3">Ver Experiencias</a>
+                    <a href="https://wa.me/573226452179" class="block w-full text-center bg-green-500 hover:bg-green-600 text-white font-bold py-3 rounded-lg transition"><i class="fab fa-whatsapp mr-2"></i> Reservar Cena</a>
                 </div>
             </aside>
         </div>
@@ -111,7 +112,7 @@
                 <div class="hidden md:block">
                     <h4 class="text-white font-bold mb-4 text-sm">Explorar</h4>
                     <ul class="space-y-2 text-gray-400 text-xs">
-                        <li><a href="../../fleet.html" class="hover:text-blue-400">Flota</a></li>
+                        <li><a href="../../fleet.html" class="hover:text-blue-400">Flotilla</a></li>
                         <li><a href="../../experiences.html" class="hover:text-blue-400">Experiencias</a></li>
                         <li><a href="../../about.html" class="hover:text-blue-400">Nosotros</a></li>
                     </ul>
@@ -144,19 +145,7 @@
 
     <script>
         document.getElementById('mobile-menu-btn').addEventListener('click', function() {
-            const menu = document.getElementById('mobile-menu');
-            if (menu.classList.contains('hidden')) {
-                menu.classList.remove('hidden');
-                setTimeout(() => menu.classList.remove('opacity-0'), 10);
-            } else {
-                menu.classList.add('opacity-0');
-                setTimeout(() => menu.classList.add('hidden'), 300);
-            }
-        });
-        document.getElementById('close-menu-btn')?.addEventListener('click', function() {
-            const menu = document.getElementById('mobile-menu');
-            menu.classList.add('opacity-0');
-            setTimeout(() => menu.classList.add('hidden'), 300);
+            document.getElementById('mobile-menu').classList.toggle('hidden');
         });
     </script>
 </body>
