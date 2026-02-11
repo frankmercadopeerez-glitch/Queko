@@ -156,27 +156,19 @@
             .whatsapp-text { font-size: 10px; padding: 3px 10px; }
         }
 
-        /* --- Carrusel Infinito de Reseñas (Corregido) --- */
+        /* --- Carrusel Infinito de Reseñas --- */
         .reviews-slider { overflow: hidden; width: 100%; position: relative; }
-        
-        /* Lógica Matemática:
-           - Total tarjetas: 8 (4 originales + 4 duplicadas)
-           - Ancho tarjeta: 350px
-           - Ancho total pista: 350 * 8 = 2800px
-           - Desplazamiento: 350 * 4 = 1400px (la mitad exacta)
-        */
         .reviews-track { 
             display: flex; 
             width: calc(350px * 8); 
             animation: scroll 35s linear infinite; 
         }
-        
         .review-card { width: 350px; padding: 0 15px; flex-shrink: 0; }
         .reviews-track:hover { animation-play-state: paused; }
 
         @keyframes scroll {
             0% { transform: translateX(0); }
-            100% { transform: translateX(calc(-350px * 4)); } /* Mueve exactamente la mitad */
+            100% { transform: translateX(calc(-350px * 4)); }
         }
         
         @media (max-width: 768px) {
@@ -198,7 +190,8 @@
             </a>
             <div class="hidden md:flex items-center space-x-8 text-sm font-semibold tracking-wide uppercase h-full">
                 <a href="index.html" class="text-white hover:text-blue-400 transition shadow-black drop-shadow-md">Inicio</a>
-                <a href="fleet.html" class="text-white hover:text-blue-400 transition drop-shadow-md">Flota</a>
+                <!-- CAMBIO: Flota por Flotilla -->
+                <a href="fleet.html" class="text-white hover:text-blue-400 transition drop-shadow-md">Flotilla</a>
                 <a href="experiences.html" class="text-white hover:text-blue-400 transition drop-shadow-md">Experiencias</a>
                 <a href="about.html" class="text-white hover:text-blue-400 transition drop-shadow-md">Nosotros</a>
                 <a href="blog/index.html" class="text-white hover:text-blue-400 transition drop-shadow-md">Blog</a>
@@ -224,8 +217,10 @@
 
     <!-- Hero Section -->
     <header class="hero-section flex items-center justify-center text-center px-4">
-        <div class="hero-bg-slide active" style="background-image: url('images/acuario.jpg');"></div>
-        <div class="hero-bg-slide" style="background-image: url('images/cartagenasunset.jpg');"></div>
+        <!-- CAMBIO: Imágenes de fondo (Atardecer, Acuario, Cartagena) -->
+        <div class="hero-bg-slide active" style="background-image: url('images/cartagenasunset.jpg');"></div>
+        <div class="hero-bg-slide" style="background-image: url('images/acuario.jpg');"></div>
+        <div class="hero-bg-slide" style="background-image: url('images/cartagena.jpg');"></div>
         
         <div class="hero-overlay"></div>
 
@@ -318,7 +313,7 @@
         </div>
     </section>
 
-    <!-- Carrusel Infinito de Reseñas (ACTUALIZADO: 8 Items Totales) -->
+    <!-- Carrusel Infinito de Reseñas -->
     <section class="py-16 bg-white overflow-hidden border-t border-gray-100">
         <div class="container mx-auto px-6 mb-10 text-center">
             <h2 class="text-2xl font-bold text-gray-900">Nuestros Clientes Opinan</h2>
@@ -366,9 +361,6 @@
                         </div>
                     </div>
                 </div>
-
-                <!-- --- DUPLICADOS PARA LOOP INFINITO --- -->
-                
                 <!-- 5. Carlos (Copia) -->
                 <div class="review-card">
                     <div class="bg-gray-50 p-8 rounded-xl shadow-sm border border-gray-100 h-full">
@@ -421,7 +413,6 @@
                 <p class="text-gray-500 mt-2">Descubre los secretos del Caribe en nuestro blog.</p>
             </div>
             <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto mb-10">
-                <!-- Blog 1: Cocinas -->
                 <article class="bg-gray-50 rounded-lg overflow-hidden shadow hover:shadow-lg transition">
                     <img src="images/cartagenacentro.jpg" alt="Cocinas del Caribe" class="w-full h-48 object-cover">
                     <div class="p-6">
@@ -429,7 +420,6 @@
                         <p class="text-gray-600 text-sm">Relatos que se sirven en un plato: historias de resistencia y sabor.</p>
                     </div>
                 </article>
-                <!-- Blog 2: Nombre Cartagena -->
                 <article class="bg-gray-50 rounded-lg overflow-hidden shadow hover:shadow-lg transition">
                     <img src="images/foto%20(6).JPG" alt="Historia Cartagena" class="w-full h-48 object-cover">
                     <div class="p-6">
@@ -494,10 +484,8 @@
 
     <!-- WhatsApp Widget Multi-idioma -->
     <div class="whatsapp-container">
-        <!-- Opciones (ocultas por defecto) -->
+        <!-- Opciones -->
         <div id="wa-options" class="wa-options">
-            
-            <!-- Opción Inglés (Nuevo Número) -->
             <a href="https://wa.me/573245685595?text=Hello,%20I%20am%20interested%20in%20booking%20a%20boat." target="_blank" class="wa-item">
                 <span class="wa-flag">🇺🇸</span>
                 <div class="wa-info">
@@ -505,8 +493,6 @@
                     <span class="wa-number">+57 324 568 5595</span>
                 </div>
             </a>
-
-            <!-- Opción Español (Número Anterior) -->
             <a href="https://wa.me/573226452179?text=Hola,%20estoy%20interesado%20en%20alquilar%20un%20bote." target="_blank" class="wa-item">
                 <span class="wa-flag">🇨🇴</span>
                 <div class="wa-info">
@@ -515,8 +501,6 @@
                 </div>
             </a>
         </div>
-
-        <!-- Botón Principal -->
         <button id="wa-main-btn" class="whatsapp-float group focus:outline-none">
             <img src="images/WhatsApp.svg.webp" alt="WhatsApp" class="whatsapp-icon">
             <span class="whatsapp-text">Contactar / Contact</span>
@@ -552,30 +536,23 @@
             setTimeout(() => menu.classList.add('hidden'), 300);
         });
 
-        // Simple Fade Slider Logic for Hero
+        // Carrusel logic (Simple Fade for Hero)
         const slides = document.querySelectorAll('.hero-bg-slide');
         let currentSlide = 0;
-        
         function nextSlide() {
             slides[currentSlide].classList.remove('active');
             currentSlide = (currentSlide + 1) % slides.length;
             slides[currentSlide].classList.add('active');
         }
+        if(slides.length > 1) { setInterval(nextSlide, 4000); }
 
-        if(slides.length > 1) {
-            setInterval(nextSlide, 4000);
-        }
-
-        // Lógica del Widget de WhatsApp
+        // WhatsApp Widget Logic
         const waBtn = document.getElementById('wa-main-btn');
         const waOptions = document.getElementById('wa-options');
-
         waBtn.addEventListener('click', function(e) {
-            e.stopPropagation(); // Evitar que el click se propague
+            e.stopPropagation();
             waOptions.classList.toggle('active');
         });
-
-        // Cerrar menú al hacer clic fuera
         document.addEventListener('click', function(event) {
             const isClickInside = waBtn.contains(event.target) || waOptions.contains(event.target);
             if (!isClickInside && waOptions.classList.contains('active')) {
